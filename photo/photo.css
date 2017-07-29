@@ -1,0 +1,14 @@
+.photo {
+	width: 100%;
+	background-color: #FFF;
+    /* background : linear-gradient(to right, #EEE, white , #EEE); /* Standard syntax */
+}
+
+.photo img {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 40px;
+	margin-bottom: 40px;
+    border: 15px solid transparent;
+    border-image:url(ressources/border.png) 40;
+}
