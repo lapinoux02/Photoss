@@ -1,7 +1,8 @@
 Vue.component('photo', {
-	props: ['imageUrl'],
+	props: ['image'],
 	template :
 		'<div class="photo">'+
-			'<img v-bind:src="imageUrl" alt="Smiley face">'+
+			'<img v-bind:src="image.imageUrl" alt="Smiley face">'+
+			'<div class="description">{{image.evenement}}</div>'+
 		'</div>'
 })

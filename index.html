@@ -8,11 +8,15 @@
   <link rel="stylesheet" type="text/css" href="./photoss.css" />
   <link rel="stylesheet" type="text/css" href="./photo/photo.css" />
   <link rel="stylesheet" type="text/css" href="./titre/titre.css" />
+  <link rel="stylesheet" type="text/css" href="./navbar/navbar.css" />
+  <link rel="stylesheet" type="text/css" href="./note/note.css" />
 
   <!-- JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
   <script src="./photo/photo.js"></script>
   <script src="./titre/titre.js"></script>
+  <script src="./navbar/navbar.js"></script>
+  <script src="./note/note.js"></script>
 
 </head>
 <body>
@@ -23,10 +27,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-3">
+		<div class="col-xs-2">
 		</div>
-		<div class="col-xs-6">
-			<photo v-bind:image-url="imageUrl"></photo>
+		<div class="col-xs-8">
+			<navbar></navbar>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-5">
+			<photo v-bind:image="image"></photo>
+		</div>
+		<div class="col-xs-3">
+			<note v-bind:image="image"></note>
 		</div>
 	</div>
   </div>

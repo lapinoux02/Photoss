@@ -1,14 +1,21 @@
 .photo {
 	width: 100%;
 	background-color: #FFF;
+	text-align : center;
+	padding-bottom: 15%;
     /* background : linear-gradient(to right, #EEE, white , #EEE); /* Standard syntax */
+	box-shadow: 0 0 65px #cdbe9f inset, 0 0 20px #beae8c inset, 1px 1px 12px #555;
 }
 
 .photo img {
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 40px;
-	margin-bottom: 40px;
-    border: 15px solid transparent;
+	width: 90%;
+	margin-top: 5%;
+	margin-bottom: 15%;
+    border: 10% solid transparent;
     border-image:url(ressources/border.png) 40;
+}
+
+.photo .description {
+	font-family: RipeApricots;
+	font-size:4em;
 }
