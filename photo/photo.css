@@ -4,7 +4,7 @@
 	text-align : center;
 	padding-bottom: 15%;
     /* background : linear-gradient(to right, #EEE, white , #EEE); /* Standard syntax */
-	box-shadow: 0 0 65px #cdbe9f inset, 0 0 20px #beae8c inset, 1px 1px 12px #555;
+	box-shadow: 0 0 65px #DDD inset, 0 0 20px #b7b7b7 inset, 1px 1px 12px #555;
 }
 
 .photo img {
