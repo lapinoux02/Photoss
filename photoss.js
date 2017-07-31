@@ -14,7 +14,7 @@ var photossApp = new Vue({
 			lieu: 'Toulouse',
 			date: 'ccc'
 		}],
-		image: null
+		image: {}
 	},
 	methods: {
 		getRandom: function() {
