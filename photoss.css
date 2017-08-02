@@ -7,3 +7,8 @@ body {
 	font-family: RipeApricots;
     src: url(./ressources/fonts/RipeApricots.ttf);
 }
+
+@font-face {
+	font-family: carveItUp;
+	src: url(./ressources/fonts/carveItUp.ttf);
+}
