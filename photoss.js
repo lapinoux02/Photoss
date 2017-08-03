@@ -2,17 +2,11 @@ var photossApp = new Vue({
 	el: '#photoss',
 	data: {
 		images: [{			
-			imageUrl: 'img/2017-05-20 16.46.45.jpg',
-			evenement: 'aa',
-			description: 'bb',
-			lieu: 'Nantes',
-			date: 'cd'
-		}, {			
-			imageUrl: 'img/2017-05-20 16.34.30.jpg',
-			evenement: 'aaa',
-			description: 'bbb',
-			lieu: 'Toulouse',
-			date: 'ccc'
+			imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqQu_RxdsKbjl4JhIxcAu6cT2n8wVU70kO1gZKZLYubDAUm0Ss9Q',
+			evenement: '???',
+			description: '???',
+			lieu: '???',
+			date: '???'
 		}],
 		image: {}
 	},
