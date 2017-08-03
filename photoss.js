@@ -8,7 +8,8 @@ var photossApp = new Vue({
 			lieu: '???',
 			date: '???'
 		}],
-		image: {}
+		image: {},
+		intervalId: null
 	},
 	methods: {
 		getRandom: function() {
@@ -17,6 +18,11 @@ var photossApp = new Vue({
 	},
 	mounted: function() {
 		image = this.getRandom();
-		setInterval(this.getRandom, 2000);
+		intervalId = setInterval(this.getRandom, 4000);
+	},
+	updated: function() {
+		clearInterval(intervalId);
+		image = this.getRandom();
+		intervalId = setInterval(this.getRandom, 4000);
 	}
 })
