@@ -3,8 +3,8 @@ Vue.component('navbar', {
 	template: 
 		'<div class="navbar">'+
 			'<div class="row">'+
-				'<div class="col-xs-2 button">Acceuil</div>'+
-				'<div class="col-xs-2 button">Albums</div>'+
+				'<router-link to="/acceuil" class="col-xs-2 button">Acceuil</router-link>'+
+				'<router-link to="/album" class="col-xs-2 button">Albums</router-link>'+
 				'<div class="col-xs-2 button">Ajout</div>'+
 				'<div class="col-xs-2 col-xs-offset-4 button" v-on:click="this.import">Import</div>'+
 			'</div>'+
