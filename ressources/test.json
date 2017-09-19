@@ -3,11 +3,13 @@
 	"evenement": "aa",
 	"description": "bb",
 	"lieu": "Nantes",
-	"date": "cd"
+	"date": "cd",
+	"album": "1"
 }, {			
 	"imageUrl": "img/2017-05-20 16.34.30.jpg",
 	"evenement": "aaa",
 	"description": "bbb",
 	"lieu": "Toulouse",
-	"date": "ccc"
+	"date": "ccc",
+	"album": "2"
 }]

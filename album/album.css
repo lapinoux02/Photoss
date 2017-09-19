@@ -1,3 +1,5 @@
-.photoVide {
-	background-color: #FFF;
+.photoAlbum {
+	position: absolute;
+	top: 0;
+	left: 0;
 }

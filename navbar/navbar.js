@@ -4,7 +4,7 @@ Vue.component('navbar', {
 		'<div class="navbar">'+
 			'<div class="row">'+
 				'<router-link to="/acceuil" class="col-xs-2 button">Acceuil</router-link>'+
-				'<router-link to="/album" class="col-xs-2 button">Albums</router-link>'+
+				'<router-link to="/albums" class="col-xs-2 button">Albums</router-link>'+
 				'<div class="col-xs-2 button">Ajout</div>'+
 				'<div class="col-xs-2 col-xs-offset-4 button" v-on:click="this.import">Import</div>'+
 			'</div>'+

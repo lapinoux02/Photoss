@@ -10,26 +10,36 @@ const acceuil = {
 		'</div>'
 };
 
-const album = {
+const albums = {
 	props: ['image', 'images'],
 	data: function() {
+
+		var albums = [];
+
+		var imagesTriees = this.images.slice().sort((a,b) => a.album > b.album);
+		var imagesMappees = imagesTriees.map(i => i.album);
+		while (imagesTriees.length) {
+			albums.push({
+				titre: imagesTriees[0].album,
+				liste: imagesTriees.splice(0, imagesMappees.lastIndexOf(imagesTriees[0].album)+1)
+			});
+		}
+
 		return {
-			albums: function() {
-				var albums = [];
-				this.images.forEach(function(image) {
-					if (albums.indexOf(image.album) === -1) {
-						albums[image.album] = [image];
-					} else {
-						albums[image.album].push(image);
-					}
-				});
-				return albums;
-			}
+			albums: albums
 		};
 	},
 	template:
-		`<div>
-			<album v-for="album in this.albums"></album>
+		`<div class="row">
+			<div class="col-xs-3">
+			</div>
+			<div class="col-xs-6">
+				<div class="row">
+					<div>
+						<album class="col-xs-6" v-for="album in this.albums" :album="album" :key="album.titre"></album>
+					</div>
+				</div>
+			</div>
 		</div>`
 };
 
@@ -37,7 +47,7 @@ const router = new VueRouter({
 	routes: [
 		{path: '/', component: acceuil},
 		{path: '/acceuil', component: acceuil},
-		{path: '/album', component: album}
+		{path: '/albums', component: albums}
 	]
 })
 
