@@ -1,6 +1,6 @@
 const acceuil = {
 	props: ['image', 'images'],
-	template: 
+	template:
 		'<div class="row">' +
 			'<div class="col-xs-3">' +
 			'</div>' +
@@ -43,11 +43,57 @@ const albums = {
 		</div>`
 };
 
+const gestion = {
+	props: ['image', 'images'],
+	data: function() {
+		return {
+			photoList: [],
+			photoToSort: {
+				imageUrl: ''
+			},
+			navigationIndex: 0
+		}
+	},
+	template:
+		`<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-1">
+				<div class="navigation-photo" v-on:click="this.previousPhoto" v-if="this.navigationIndex"><</div>
+			</div>
+			<div class="col-xs-6">
+				<illustration :image="photoToSort"></illustration>
+			</div>
+			<div class="col-xs-1">
+				<div class="navigation-photo" v-on:click="this.nextPhoto" v-if="this.navigationIndex !== this.photoList.length-1">></div>
+			</div>
+		</div>`,
+	methods: {
+		nextPhoto: function() {
+			this.photoToSort.imageUrl = REST_CLIENT.photos + this.photoList[++this.navigationIndex];
+		},
+		previousPhoto: function() {
+			this.photoToSort.imageUrl = REST_CLIENT.photos + this.photoList[--this.navigationIndex];
+		}
+	},
+	mounted: function() {
+		axios
+	    .get(REST_CLIENT.photoList)
+	    .then(res => {
+	    	this.photoList = res.data;
+	    	if (res.data.length) {
+	    		this.navigationIndex = 0;
+	    		this.photoToSort.imageUrl = REST_CLIENT.photos + res.data[0];
+	    	}
+	    });
+	}
+};
+
 const router = new VueRouter({
 	routes: [
 		{path: '/', component: acceuil},
 		{path: '/acceuil', component: acceuil},
-		{path: '/albums', component: albums}
+		{path: '/albums', component: albums},
+		{path: '/gestion', component: gestion}
 	]
 })
 
@@ -57,8 +103,8 @@ var photossApp = new Vue({
 	data: {
 		images: [{			
 			imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqQu_RxdsKbjl4JhIxcAu6cT2n8wVU70kO1gZKZLYubDAUm0Ss9Q',
-			evenement: '???',
-			description: '???',
+			evenement: 'ev',
+			description: 'tata',
 			lieu: '???',
 			date: '???',
 			album: 'test'
