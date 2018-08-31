@@ -111,14 +111,7 @@ var photossApp = new Vue({
 	router: router,
 	el: '#photoss',
 	data: {
-		images: [{			
-			imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqQu_RxdsKbjl4JhIxcAu6cT2n8wVU70kO1gZKZLYubDAUm0Ss9Q',
-			evenement: 'ev',
-			description: 'tata',
-			lieu: '???',
-			date: '???',
-			album: 'test'
-		}],
+		images: [],
 		image: {},
 		intervalId: null
 	},
@@ -127,13 +120,19 @@ var photossApp = new Vue({
 			this.image = this.images[Math.floor(Math.random()*this.images.length)];
 		}
 	},
+	created: function() {
+		this.bddRef = firebase.database().ref('photos');
+		this.bddRef.on('value', snap => {
+			this.images = Object.values(snap.val());
+		});
+	},
 	mounted: function() {
-		image = this.getRandom();
-		intervalId = setInterval(this.getRandom, 4000);
+		this.getRandom();
+		this.intervalId = setInterval(this.getRandom, 4000);
 	},
 	updated: function() {
-		clearInterval(intervalId);
-		image = this.getRandom();
-		intervalId = setInterval(this.getRandom, 4000);
+		clearInterval(this.intervalId);
+		this.getRandom();
+		this.intervalId = setInterval(this.getRandom, 4000);
 	}
 })
