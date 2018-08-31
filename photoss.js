@@ -78,17 +78,16 @@ const gestion = {
 	},
 	created: async function() {
 		let firebasePhotos = [];
-		let localPhotosNames = [];
 
 		// Récupération des photos locales
 		res = await axios.get(REST_CLIENT.photoList);
-		localPhotoNames = res.data;
+		let localPhotosNames = res.data;
 
 		// Initialisation ref firebase et récupération des photos qui y sont
 		this.bddRef = firebase.database().ref('photos');
 		this.bddRef.on('value', snap => {
 			firebasePhotos = snap.val();
-			this.photoList = localPhotoNames.filter(photoName => {
+			this.photoList = localPhotosNames.filter(photoName => {
 				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);
 			}).map((photoName, i) => {
 				return Object.assign(this.photoList[i] || {}, {
