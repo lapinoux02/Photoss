@@ -73,7 +73,7 @@ const gestion = {
 			--this.navigationIndex;
 		},
 		save: function() {
-			this.bddRef.push(this.photoList[this.navigationIndex]);
+			this.bddRef.push(this.photoList.splice(this.navigationIndex, 1)[0]);
 		}
 	},
 	created: async function() {
@@ -90,10 +90,10 @@ const gestion = {
 			firebasePhotos = snap.val();
 			this.photoList = localPhotoNames.filter(photoName => {
 				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);
-			}).map(photoName => {
-				return {
+			}).map((photoName, i) => {
+				return Object.assign(this.photoList[i] || {}, {
 					imageUrl: REST_CLIENT.photos + photoName
-				};
+				});
 			});
 		});
 	}
