@@ -5,3 +5,7 @@ const REST_CLIENT = {
 	photos: BASE_URL + 'photos/',
 	photoList: BASE_URL + 'photos/list/'
 }
+
+const MATH_UTILS = {
+	randomRotate: (maxAngle = 7) => Math.floor(Math.random()*maxAngle) - (maxAngle-1)/2,
+}

@@ -47,10 +47,8 @@ const gestion = {
 	props: ['image', 'images'],
 	data: function() {
 		return {
+			bddRef: null,
 			photoList: [],
-			photoToSort: {
-				imageUrl: ''
-			},
 			navigationIndex: 0
 		}
 	},
@@ -61,7 +59,7 @@ const gestion = {
 				<div class="navigation-photo" v-on:click="this.previousPhoto" v-if="this.navigationIndex"><</div>
 			</div>
 			<div class="col-xs-6">
-				<illustration :image="photoToSort"></illustration>
+				<illustration :image="photoList[navigationIndex]" :alterable="true" :save="save"></illustration>
 			</div>
 			<div class="col-xs-1">
 				<div class="navigation-photo" v-on:click="this.nextPhoto" v-if="this.navigationIndex !== this.photoList.length-1">></div>
@@ -69,22 +67,35 @@ const gestion = {
 		</div>`,
 	methods: {
 		nextPhoto: function() {
-			this.photoToSort.imageUrl = REST_CLIENT.photos + this.photoList[++this.navigationIndex];
+			++this.navigationIndex;
 		},
 		previousPhoto: function() {
-			this.photoToSort.imageUrl = REST_CLIENT.photos + this.photoList[--this.navigationIndex];
+			--this.navigationIndex;
+		},
+		save: function() {
+			this.bddRef.push(this.photoList[this.navigationIndex]);
 		}
 	},
-	mounted: function() {
-		axios
-	    .get(REST_CLIENT.photoList)
-	    .then(res => {
-	    	this.photoList = res.data;
-	    	if (res.data.length) {
-	    		this.navigationIndex = 0;
-	    		this.photoToSort.imageUrl = REST_CLIENT.photos + res.data[0];
-	    	}
-	    });
+	created: async function() {
+		let firebasePhotos = [];
+		let localPhotosNames = [];
+
+		// Récupération des photos locales
+		res = await axios.get(REST_CLIENT.photoList);
+		localPhotoNames = res.data;
+
+		// Initialisation ref firebase et récupération des photos qui y sont
+		this.bddRef = firebase.database().ref('photos');
+		this.bddRef.on('value', snap => {
+			firebasePhotos = snap.val();
+			this.photoList = localPhotoNames.filter(photoName => {
+				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);
+			}).map(photoName => {
+				return {
+					imageUrl: REST_CLIENT.photos + photoName
+				};
+			});
+		});
 	}
 };
 

@@ -1,12 +1,12 @@
 Vue.component('illustration', {
-	props: ['image'],
+	props: ['image', 'alterable', 'save'],
 	template:
-		'<div class="row">' +
-			'<div class="col-xs-8">' +
-				'<photo v-bind:image="image"></photo>' +
-			'</div>' +
-			'<div class="col-xs-4">' +
-				'<note v-bind:image="image"></note>' +
-			'</div>' +
-		'</div>'
+		`<div class="row">
+			<div class="col-xs-8">
+				<photo :image="image || {}"></photo>
+			</div>
+			<div class="col-xs-4">
+				<note :image="image || {}" :alterable="alterable" :save="save"></note>
+			</div>
+		</div>`
 })

@@ -4,18 +4,3 @@
 	height: 80px;
 	padding-top: 10px;
 }
-
-.button {
-	text-align:center;
-	font-size: 3em;
-	font-family: carveItUp;
-	color: #808080;
-	font-weight: bold;
-	font-style: italic;
-	text-shadow: 1px 0px white;
-}
-
-.button:hover {
-	color: #555;
-	cursor: pointer;
-}
