@@ -1,3 +1,11 @@
+.album {
+	margin-bottom: 50px;
+}
+
+.album .photo {
+	cursor: pointer;
+}
+
 .photoAlbum {
 	position: absolute;
 	top: 0;

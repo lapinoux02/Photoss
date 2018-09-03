@@ -38,3 +38,11 @@ body {
     color: #555;
     cursor: pointer;
 }
+
+.scrollable-container {
+    height: calc(100vh - 295px);
+}
+
+.scrollable-row {
+    padding-top: 10px;
+}
