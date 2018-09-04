@@ -1,5 +1,4 @@
 const gestion = {
-	props: ['image', 'images'],
 	data: function() {
 		return {
 			bddRef: null,

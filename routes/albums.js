@@ -1,5 +1,4 @@
 const albums = {
-	props: ['image', 'images'],
 	data: function() {
 		return {
 			bddRef: null,
