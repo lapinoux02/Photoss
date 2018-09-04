@@ -44,7 +44,8 @@ const gestionRoute = {
 				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);
 			}).map((photoName, i) => {
 				return Object.assign(this.photoList[i] || {}, {
-					imageUrl: REST_CLIENT.photos + photoName
+					imageUrl: REST_CLIENT.photos + photoName,
+					imageName: photoName
 				});
 			});
 		});

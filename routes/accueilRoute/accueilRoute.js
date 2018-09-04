@@ -6,13 +6,13 @@ const acceuilRoute = {
 		}
 	},
 	template:
-		'<div class="row">' +
-			'<div class="col-xs-3">' +
-			'</div>' +
-			'<div class="col-xs-6">' +
-				'<illustration v-bind:image="image"></illustration>' +
-			'</div>' +
-		'</div>',
+		`<div class="row">
+			<div class="col-xs-3">
+			</div>
+			<div class="col-xs-6">
+				<illustration v-bind:image="image"></illustration>
+			</div>
+		</div>`,
 	methods: {
 		getRandom: function() {
 			this.image = this.images[Math.floor(Math.random()*this.images.length)];

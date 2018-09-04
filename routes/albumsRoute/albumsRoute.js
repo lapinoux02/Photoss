@@ -21,7 +21,7 @@ const albumsRoute = {
 		</div>`,
 	methods: {
 		gotoAlbum: (album) => {
-			router.push(`/albums/${album.title}`);
+			router.push(`/albums/${album.title}/images`);
 		}
 	},
 	created: function() {
