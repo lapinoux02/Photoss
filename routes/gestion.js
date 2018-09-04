@@ -27,7 +27,7 @@ const gestion = {
 			--this.navigationIndex;
 		},
 		save: function() {
-			this.bddRef.push(this.photoList.splice(this.navigationIndex, 1)[0]);
+			bddRef.push(this.photoList.splice(this.navigationIndex, 1)[0]);
 		}
 	},
 	created: async function() {
@@ -38,8 +38,7 @@ const gestion = {
 		let localPhotosNames = res.data;
 
 		// Initialisation ref firebase et récupération des photos qui y sont
-		this.bddRef = firebase.database().ref('photos');
-		this.bddRef.on('value', snap => {
+		bddRef.on('value', snap => {
 			firebasePhotos = snap.val();
 			this.photoList = localPhotosNames.filter(photoName => {
 				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);

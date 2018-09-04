@@ -9,3 +9,5 @@ const REST_CLIENT = {
 const MATH_UTILS = {
 	randomRotate: (maxAngle = 7) => Math.floor(Math.random()*maxAngle) - (maxAngle-1)/2,
 }
+
+const bddRef = firebase.database().ref('photos');

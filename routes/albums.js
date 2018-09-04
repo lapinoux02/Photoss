@@ -25,8 +25,7 @@ const albums = {
 		}
 	},
 	created: function() {
-		this.bddRef = firebase.database().ref('photos');
-		this.bddRef.on('value', snap => {
+		bddRef.on('value', snap => {
 			let sortedImages = Object.values(snap.val()).sort((a,b) => a.album > b.album);
 			this.albums = [];
 			while (sortedImages.length) {

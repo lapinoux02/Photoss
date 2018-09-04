@@ -2,7 +2,7 @@ const albumRoute = {
 	data: function() {
 		return {
 			bddRef: null,
-			images: {}
+			images: []
 		}
 	},
 	template: 
@@ -20,8 +20,7 @@ const albumRoute = {
 			</div>
 		</div>`,
 	created: function() {
-		this.bddRef = firebase.database().ref('photos');
-		this.bddRef.orderByChild('album').equalTo(router.currentRoute.params.albumId).on("value", (snap) => {
+		bddRef.orderByChild('album').equalTo(router.currentRoute.params.albumId).on("value", (snap) => {
 		  	this.images = Object.values(snap.val());
 		});
 	}

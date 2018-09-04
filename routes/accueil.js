@@ -19,8 +19,7 @@ const acceuil = {
 		}
 	},
 	created: function() {
-		this.bddRef = firebase.database().ref('photos');
-		this.bddRef.on('value', snap => {
+		bddRef.on('value', snap => {
 			this.images = Object.values(snap.val());
 		});
 		this.getRandom();
