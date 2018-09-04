@@ -1,4 +1,4 @@
-const gestion = {
+const gestionRoute = {
 	data: function() {
 		return {
 			bddRef: null,

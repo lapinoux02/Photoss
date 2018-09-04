@@ -1,10 +1,10 @@
 const router = new VueRouter({
 	routes: [
-		{path: '/', component: acceuil},
-		{path: '/acceuil', component: acceuil},
-		{path: '/albums', component: albums},
+		{path: '/', component: acceuilRoute},
+		{path: '/acceuil', component: acceuilRoute},
+		{path: '/albums', component: albumsRoute},
 		{path: '/albums/:albumId', component: albumRoute},
-		{path: '/gestion', component: gestion}
+		{path: '/gestion', component: gestionRoute}
 	]
 })
 

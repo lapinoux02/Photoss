@@ -1,4 +1,4 @@
-const albums = {
+const albumsRoute = {
 	data: function() {
 		return {
 			bddRef: null,

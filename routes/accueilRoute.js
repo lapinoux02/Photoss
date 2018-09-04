@@ -1,4 +1,4 @@
-const acceuil = {
+const acceuilRoute = {
 	data: function() {
 		return {
 			images: [],
