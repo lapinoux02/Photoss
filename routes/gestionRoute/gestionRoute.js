@@ -9,13 +9,16 @@ const gestionRoute = {
 	template:
 		`<div class="row">
 			<div class="col-xs-2"></div>
-			<div class="col-xs-1">
+			<div v-if="photoList.length" class="col-xs-1">
 				<div class="navigation-photo" v-on:click="this.previousPhoto" v-if="this.navigationIndex"><</div>
 			</div>
-			<div class="col-xs-6">
+			<div v-if="photoList.length" class="col-xs-6">
 				<illustration :image="photoList[navigationIndex]" :alterable="true" :save="save"></illustration>
 			</div>
-			<div class="col-xs-1">
+			<div v-else>
+				Toutes les photos ont été traitées :)
+			</div>
+			<div v-if="photoList.length" class="col-xs-1">
 				<div class="navigation-photo" v-on:click="this.nextPhoto" v-if="this.navigationIndex !== this.photoList.length-1">></div>
 			</div>
 		</div>`,
@@ -41,10 +44,9 @@ const gestionRoute = {
 		bddRef.on('value', snap => {
 			firebasePhotos = snap.val();
 			this.photoList = localPhotosNames.filter(photoName => {
-				return !Object.values(firebasePhotos).some(photo => photo.imageUrl === REST_CLIENT.photos + photoName);
+				return !Object.values(firebasePhotos).some(photo => photo.imageName === photoName);
 			}).map((photoName, i) => {
 				return Object.assign(this.photoList[i] || {}, {
-					imageUrl: REST_CLIENT.photos + photoName,
 					imageName: photoName
 				});
 			});

@@ -26,7 +26,7 @@ const albumsRoute = {
 	},
 	created: function() {
 		bddRef.on('value', snap => {
-			let sortedImages = Object.values(snap.val()).sort((a,b) => a.album > b.album);
+			let sortedImages = Object.values(snap.val()).sort((a,b) => a.album > b.album ? -1 : 1);
 			this.albums = [];
 			while (sortedImages.length) {
 				this.albums.push({
