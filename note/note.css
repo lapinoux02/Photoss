@@ -1,13 +1,21 @@
 .note {
-	width: 100%;
+	width: 15vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	margin-top: 0vw;
+    box-sizing: border-box;
 	background-color: #FFF;
 	box-shadow: 0 0 65px #DDD inset, 0 0 20px #b7b7b7 inset, 1px 1px 12px #555;
 	font-family: RipeApricots;
-	font-size:3em;
-	line-height: 100%;
-	margin-bottom: 30px;
+    font-size: 	2.5vw;
+    line-height: 1vw;
+
+}
+
+.note li {
+	margin-bottom: 1vw;
 }
 
 .note .note-input {
-	height: 30px;
+	height: 1.5vw;
 }

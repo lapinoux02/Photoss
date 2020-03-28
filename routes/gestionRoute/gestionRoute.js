@@ -1,55 +1,46 @@
 const gestionRoute = {
-	data: function() {
+	data() {
 		return {
-			bddRef: null,
 			photoList: [],
 			navigationIndex: 0
 		}
 	},
+	computed: {
+		image() {
+			return this.photoList[this.navigationIndex];
+		}
+	},
 	template:
-		`<div class="row">
-			<div class="col-xs-2"></div>
-			<div v-if="photoList.length" class="col-xs-1">
+		`<div id="gestionRoute">
+			<div v-if="photoList.length" class="navigation">
 				<div class="navigation-photo" v-on:click="this.previousPhoto" v-if="this.navigationIndex"><</div>
 			</div>
-			<div v-if="photoList.length" class="col-xs-6">
-				<illustration :image="photoList[navigationIndex]" :alterable="true" :save="save"></illustration>
+			<div v-if="photoList.length" class="illustration">
+				<illustration :image="image" :save="save"></illustration>
 			</div>
 			<div v-else>
 				Toutes les photos ont été traitées :)
 			</div>
-			<div v-if="photoList.length" class="col-xs-1">
+			<div v-if="photoList.length" class="navigation">
 				<div class="navigation-photo" v-on:click="this.nextPhoto" v-if="this.navigationIndex !== this.photoList.length-1">></div>
 			</div>
 		</div>`,
 	methods: {
-		nextPhoto: function() {
+		nextPhoto() {
 			++this.navigationIndex;
 		},
-		previousPhoto: function() {
+		previousPhoto() {
 			--this.navigationIndex;
 		},
-		save: function() {
-			bddRef.push(this.photoList.splice(this.navigationIndex, 1)[0]);
+		async save(image) {
+			await REST_CLIENT.saveImage(image);
+			this.photoList[this.navigationIndex] = image;
+			if (image.album) {
+				this.photoList.splice(this.navigationIndex, 1);
+			}
 		}
 	},
-	created: async function() {
-		let firebasePhotos = [];
-
-		// Récupération des photos locales
-		res = await axios.get(REST_CLIENT.photoList);
-		let localPhotosNames = res.data;
-
-		// Initialisation ref firebase et récupération des photos qui y sont
-		bddRef.on('value', snap => {
-			firebasePhotos = snap.val();
-			this.photoList = localPhotosNames.filter(photoName => {
-				return !Object.values(firebasePhotos).some(photo => photo.imageName === photoName);
-			}).map((photoName, i) => {
-				return Object.assign(this.photoList[i] || {}, {
-					imageName: photoName
-				});
-			});
-		});
+	async created() {
+		this.photoList.push(...(await REST_CLIENT.getUnsortedImagesData()));
 	}
 };

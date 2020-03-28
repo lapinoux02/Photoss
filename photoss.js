@@ -5,7 +5,8 @@ const router = new VueRouter({
 		{path: '/albums', component: albumsRoute},
 		{path: '/albums/:albumId/images', component: albumImagesRoute},
 		{path: '/albums/:albumId/images/:imageName', component: imageRoute},
-		{path: '/gestion', component: gestionRoute}
+		{path: '/gestion', component: gestionRoute},
+		{path: '/connexion', component: connexionRoute}
 	]
 })
 

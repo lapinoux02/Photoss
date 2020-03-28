@@ -1,21 +1,52 @@
 .photo {
-	width: 100%;
+    margin-bottom: 1vw;
+    width: 14vw;
+    height: 18vw;
+    padding-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 	background-color: #FFF;
-	text-align : center;
-	padding-bottom: 15%;
-    /* background : linear-gradient(to right, #EEE, white , #EEE); /* Standard syntax */
 	box-shadow: 0 0 65px #DDD inset, 0 0 20px #b7b7b7 inset, 1px 1px 12px #555;
 }
 
+.photo.large {
+    width: 28vw;
+    height: 36vw;
+    padding-top: 2vw;
+}
+
 .photo img {
-	width: 90%;
-	margin-top: 5%;
-	margin-bottom: 15%;
-    border: 10% solid transparent;
-    border-image:url(ressources/border.png) 40;
+    width: 12vw;
+    height: 12vw;
+	object-fit: contain;
+    align-self: center;
+}
+
+.photo.large img {
+    width: 24vw;
+    height: 24vw;
 }
 
 .photo .description {
-	font-family: RipeApricots;
-	font-size:4em;
+    font-family: RipeApricots;
+    height: 4vw;
+    width: 12vw;
+    padding-top: 1vw;
+    font-size: 2vw;
+    line-height: 1vw;
+    overflow: hidden;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo.large .description {
+    height: 8vw;
+    width: 24vw;
+    padding-top: 2vw;
+    font-size: 4vw;
+    line-height: 2vw;
 }

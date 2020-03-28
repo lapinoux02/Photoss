@@ -1,3 +1,11 @@
-.albumImages .photo {
+#albumImages {
+	width: 68vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#albumImages .photo {
 	cursor: pointer;
+	margin-right: 3vw;
 }

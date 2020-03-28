@@ -1,6 +1,6 @@
 .lettre {
-	width: 5%;
+	object-fit: contain;
+	width: 3vw;
     box-shadow: 8px 8px 12px #555;
-	margin : 0.5% 0.5% 0.5% 0.5%;
-
+	margin : 0.3vw;
 }

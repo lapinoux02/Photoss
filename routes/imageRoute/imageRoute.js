@@ -1,19 +1,26 @@
 const imageRoute = {
-	data: function() {
+	data() {
 		return {
-			image: {}
+			album: router.currentRoute.params.albumId,
+			image: router.currentRoute.params.imageName,
+			imageData: null
 		}
 	},
 	template:
-		`<div class="row">
-			<div class="col-xs-3"></div>
-			<div class="col-xs-6">
-				<illustration v-bind:image="image"></illustration>
-			</div>
+		`<div id="imageRoute">
+			<illustration v-if="imageData" :album="album" :image="imageData" :modify="modify"></illustration>
 		</div>`,
-	created: function() {
-		bddRef.orderByChild('imageName').equalTo(router.currentRoute.params.imageName).on('value', (snap) => {
-		  	this.image = Object.values(snap.val())[0];
-		});
+	methods: {
+		async modify(image) {
+			await REST_CLIENT.unsortImage(this.imageData);
+			await REST_CLIENT.saveImage(image);
+			if (this.imageData.album !== image.album) {
+				router.push(`/albums/${image.album}/images/${image.imageName}`);
+			}
+			this.imageData = image;
+		}
+	},
+	async created() {
+		this.imageData = await REST_CLIENT.getAlbumPhotoData(this.album, this.image);
 	}
 }

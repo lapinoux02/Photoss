@@ -1,39 +1,24 @@
 const albumsRoute = {
-	data: function() {
+	data() {
 		return {
-			bddRef: null,
 			albums: []
 		};
 	},
 	template:
-		`<div class="row">
-			<div class="col-xs-3">
-			</div>
-			<div class="col-xs-6">
-				<div class="scrollable-container" data-simplebar>
-					<div class="row scrollable-row">
-						<div class="col-xs-4" v-for="album in this.albums" v-on:click="gotoAlbum(album)">
-							<album class="col-xs-10 col-xs-offset-1" :album="album" :key="album.titre"></album>
-						</div>
-					</div>
-				</div>
-			</div>
+		`<div id="albumsRoute">
+			<span v-for="album in this.albums" v-on:click="gotoAlbum(album)"><album :album="album" :key="album.title"></album><span>
 		</div>`,
 	methods: {
 		gotoAlbum: (album) => {
 			router.push(`/albums/${album.title}/images`);
 		}
 	},
-	created: function() {
-		bddRef.on('value', snap => {
-			let sortedImages = Object.values(snap.val()).sort((a,b) => a.album > b.album ? -1 : 1);
-			this.albums = [];
-			while (sortedImages.length) {
-				this.albums.push({
-					title: sortedImages[0].album,
-					list: sortedImages.splice(0, sortedImages.map(e => e.album).lastIndexOf(sortedImages[0].album) + 1)
-				});
-			}
+	async created() {
+		(await REST_CLIENT.getAlbums()).forEach(async album => {
+			this.albums.push({
+				title: album,
+				sample: await REST_CLIENT.getSampleAlbumPhotosData(album)
+			});
 		});
 	}
 };

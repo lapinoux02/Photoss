@@ -1,9 +1,9 @@
 Vue.component('album', {
 	props: ['album'],
-	template :
+	template:
 		`<div class="album">
-			<photo :image="album.list[0]" :description="album.title"></photo>
-			<photo class="photoAlbum" :image="album.list[0]" :description="album.title"></photo>
-			<photo class="photoAlbum" :image="album.list[0]" :description="album.title"></photo>
+			<div class="photoAlbum"><photo :album="album.title" :image="album.sample" :description="album.title"></photo></div>
+			<div class="photoAlbum"><photo :album="album.title" :image="album.sample" :description="album.title"></photo></div>
+			<div class="photoAlbum"><photo :album="album.title" :image="album.sample" :description="album.title"></photo></div>
 		</div>`
 });

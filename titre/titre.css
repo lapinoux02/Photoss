@@ -1,6 +1,7 @@
 .titre {
-	height: 135px;
-	width: 100%;
-	font-size: 4.5em;
-	text-align: center;
+	margin-top: 1vw;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

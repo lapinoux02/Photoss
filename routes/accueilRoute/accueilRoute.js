@@ -1,28 +1,25 @@
 const acceuilRoute = {
-	data: function() {
+	data() {
 		return {
-			images: [],
-			image: {}
+			image: null,
+			intervalId: null
 		}
 	},
 	template:
-		`<div class="row">
-			<div class="col-xs-3">
-			</div>
-			<div class="col-xs-6">
-				<illustration v-bind:image="image"></illustration>
-			</div>
+		`<div id="acceuilRoute">
+			<illustration v-if="image" :image="image"></illustration>
 		</div>`,
 	methods: {
-		getRandom: function() {
-			this.image = this.images[Math.floor(Math.random()*this.images.length)];
+		async getRandom() {
+			let image = await REST_CLIENT.getRandomImageData()
+			this.image = image;
 		}
 	},
-	created: function() {
-		bddRef.on('value', snap => {
-			this.images = Object.values(snap.val());
-		});
+	created() {
 		this.getRandom();
 		this.intervalId = setInterval(this.getRandom, 4000);
 	},
+	beforeDestroy() {
+		clearInterval(this.intervalId);
+	}
 };

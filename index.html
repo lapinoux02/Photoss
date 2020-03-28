@@ -5,9 +5,12 @@
 	<title>Photoss</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 	<link rel="stylesheet" type="text/css" href="./photoss.css" />
+	<link rel="stylesheet" type="text/css" href="./routes/accueilRoute/accueilRoute.css" />
+	<link rel="stylesheet" type="text/css" href="./routes/albumsRoute/albumsRoute.css" />
+	<link rel="stylesheet" type="text/css" href="./routes/imageRoute/imageRoute.css" />
+	<link rel="stylesheet" type="text/css" href="./routes/connexionRoute/connexionRoute.css" />
+	<link rel="stylesheet" type="text/css" href="./routes/gestionRoute/gestionRoute.css" />
 	<link rel="stylesheet" type="text/css" href="./photo/photo.css" />
 	<link rel="stylesheet" type="text/css" href="./lettre/lettre.css" />
 	<link rel="stylesheet" type="text/css" href="./titre/titre.css" />
@@ -32,17 +35,21 @@
 	<!-- JS -->
 	<!-- Libraries -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.1.3/vuex.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script>
+	<!-- stores -->
+	<script src="./stores/globalStore.js"></script>
 	<!-- routes -->
 	<script src="./routes/gestionRoute/gestionRoute.js"></script>
 	<script src="./routes/albumsRoute/albumsRoute.js"></script>
 	<script src="./routes/albumImagesRoute/albumImagesRoute.js"></script>
 	<script src="./routes/imageRoute/imageRoute.js"></script>
 	<script src="./routes/accueilRoute/accueilRoute.js"></script>
+	<script src="./routes/connexionRoute/connexionRoute.js"></script>
 	<!-- app -->
 	<script src="./utils/utils.js"></script>
+	<script src="./utils/restClient.js"></script>
 	<script src="./photo/photo.js"></script>
 	<script src="./lettre/lettre.js"></script>
 	<script src="./titre/titre.js"></script>
@@ -54,20 +61,10 @@
 </head>
 <body>
 	<div id="photoss" class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12">
-				<titre></titre>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2">
-			</div>
-			<div class="col-xs-8">
-				<navbar></navbar>
-			</div>
-		</div>
+		<titre></titre>
+		<navbar></navbar>
 		<router-view>
 	</div>
 </body>
-	<script src="./photoss.js"></script>
+<script src="./photoss.js"></script>
 </html>

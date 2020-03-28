@@ -1,13 +1,15 @@
 .album {
-	margin-bottom: 50px;
+	margin-bottom: 1vw;
+	width: 17vw;
+	height: 20vw;
+}
+
+.photoAlbum {
+	/* Trick pour que les images se superposent dans une flexbox */
+	width: 0vw;
+	height: 0vw;
 }
 
 .album .photo {
 	cursor: pointer;
-}
-
-.photoAlbum {
-	position: absolute;
-	top: 0;
-	left: 0;
 }

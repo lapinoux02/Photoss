@@ -1,0 +1,8 @@
+#connexionRoute {
+	width: 45vw;
+	display: flex;
+}
+
+#connexionRoute input {
+	height: 1.5vw
+}

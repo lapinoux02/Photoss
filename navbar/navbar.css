@@ -1,6 +1,28 @@
-.navbar {
-	margin-top:30px;
-	margin-bottom: 50px;
-	height: 80px;
-	padding-top: 10px;
+#navbar {
+	margin-top:1vw;
+	height: 5vw;
+	width: 80vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#navbar #left-block * {
+	margin-right: 3vw;
+}
+
+#navbar #right-block * {
+	margin-left: 3vw;
+}
+
+#navbar #left-block {
+	display: flex;
+	flex-direction: row;
+}
+
+/* Classe ajoutée par le composant routeur */
+.router-link-active, .router-link-active:focus {
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
 }
