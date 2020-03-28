@@ -6,7 +6,7 @@ const albumsRoute = {
 	},
 	template:
 		`<div id="albumsRoute">
-			<span v-for="album in this.albums" v-on:click="gotoAlbum(album)"><album :album="album" :key="album.title"></album><span>
+			<span v-for="album in this.albums" v-on:click="gotoAlbum(album)"><album :album="album" :key="album.title"></album></span>
 		</div>`,
 	methods: {
 		gotoAlbum: (album) => {
