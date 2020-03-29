@@ -26,5 +26,14 @@ const REST_CLIENT = {
 	async unsortImage(image) {
 		const idToken = await firebase.auth().currentUser.getIdToken(true);
 		return (await axios.post(`${BASE_URL}/photo/unsort`, {idToken, image}));
+	},
+	async addFile(formData) {
+		const idToken = await firebase.auth().currentUser.getIdToken(true);
+		formData.append('idToken', idToken);
+		return (await axios.post(`${BASE_URL}/add`, formData, {
+			headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+		}));
 	}
 }
