@@ -26,10 +26,10 @@ Vue.component('navbar', {
 		openImport() {
 			let input = document.createElement('input');
 			input.type = 'file';
+			input.multiple = true;
 			input.onchange = () => {
-				let file = input.files[0];
 				let formData = new FormData();
-				formData.append('file', file);
+				[...input.files].forEach(file => formData.append(`files`, file));
 				REST_CLIENT.addFile(formData);
 			}
 			input.click();

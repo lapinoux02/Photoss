@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8001';
+const BASE_URL = CONF.BASE_URL;
 
 const REST_CLIENT = {
 	async getAlbums() {
