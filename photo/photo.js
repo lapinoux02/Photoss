@@ -12,7 +12,7 @@ Vue.component('photo', {
 	template:
 		`<div :class="classes">
 			<img :src="imageUrl">
-			<div class="description">{{description || image.evenement}}</div>
+			<div class="description">{{description || image.description}}</div>
 		</div>`,
 	mounted() {
 		Object.assign(this.$el.style, {

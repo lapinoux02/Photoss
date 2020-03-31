@@ -1,21 +1,42 @@
 .note {
 	width: 15vw;
+	min-height: 13vw;
 	padding-top: 1vw;
 	padding-bottom: 1vw;
+	padding-left: 0.5vw;
 	margin-top: 0vw;
     box-sizing: border-box;
-	background-color: #FFF;
-	box-shadow: 0 0 65px #DDD inset, 0 0 20px #b7b7b7 inset, 1px 1px 12px #555;
+    background-color: #ddd;
+    box-shadow: 0.2vw 0.2vw 0.2vw grey;
 	font-family: RipeApricots;
     font-size: 	2.5vw;
-    line-height: 1vw;
+    line-height: 1.5vw;
+    list-style: none;
 
 }
 
 .note li {
-	margin-bottom: 1vw;
+    background-size: 1.3vw;
+	padding-left: 2vw;
+    margin-bottom: 0.5vw;
 }
 
-.note .note-input {
+.lieuIco {
+	background: url("../ressources/images/lieu.png") no-repeat left top;
+}
+
+.albumIco {
+	background: url("../ressources/images/album.png") no-repeat left top;
+}
+
+.dateIco {
+	background: url("../ressources/images/date.png") no-repeat left top;
+}
+
+.descriptionIco {
+	background: url("../ressources/images/description.png") no-repeat left top;
+}
+
+.note input {
 	height: 1.5vw;
 }

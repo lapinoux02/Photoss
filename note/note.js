@@ -18,11 +18,10 @@ Vue.component('note', {
 	template :
 		`<div>
 			<ul v-if="tmpImage" class="note">
-				<li>Lieu : <input v-model="tmpImage.lieu" type="text" v-if="editable" class="note-input"/><span v-else>{{image.lieu}}</span></li>
-				<li>Date : <input v-model="tmpImage.date" type="text" v-if="editable" class="note-input"/><span v-else>{{image.date}}</span></li>
-				<li>Evenement : <input v-model="tmpImage.evenement" type="text" v-if="editable" class="note-input"/><span v-else>{{image.evenement}}</span></li>
-				<li>Description : <input v-model="tmpImage.description" type="text" v-if="editable" class="note-input"/><span v-else>{{image.description}}</span></li>
-				<li>Album : <input v-model="tmpImage.album" type="text" v-if="editable" class="note-input"/><span v-else>{{image.album}}</span></li>
+				<li class="albumIco"><input v-model="tmpImage.album" type="text" v-if="editable"/><span v-else>{{image.album}}</span></li>
+				<li class="dateIco"><input v-model="tmpImage.date" type="text" v-if="editable"/><span v-else>{{image.date}}</span></li>
+				<li class="lieuIco"><input v-model="tmpImage.lieu" type="text" v-if="editable"/><span v-else>{{image.lieu}}</span></li>
+				<li class="descriptionIco"><textarea v-model="tmpImage.description" type="text" v-if="editable"/><span v-else>{{image.description}}</span></li>
 			</ul>
 			<div v-if="save" class="button" v-on:click="save(tmpImage)">Enregistrer</div>
 			<div v-if="canModify && !modifying" class="button" v-on:click="toggleModification()">Modifier</div>
@@ -37,12 +36,10 @@ Vue.component('note', {
 	},
 	mounted() {
 		this.tmpImage = Object.assign({}, this.image);
-		this.$el.style.transform = MATH_UTILS.randomRotate();
 	},
 	watch: {
 		image(val) {
 			this.tmpImage = Object.assign({}, val);
-			this.$el.style.transform = MATH_UTILS.randomRotate();
 		}
 	}
 })
