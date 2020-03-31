@@ -3,6 +3,6 @@ Vue.component('illustration', {
 	template:
 		`<div class="illustration">
 			<photo :image="image" :size="'large'"></photo>
-			<note :image="image" :save="save" :modify="modify"></note>
+			<note :image="image" :save="save" :modify="modify" :description="image.description"></note>
 		</div>`
 })

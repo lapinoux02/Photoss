@@ -6,13 +6,13 @@ Vue.component('photo', {
 			return `${BASE_URL}/albums/${this.image.album || undefined}/photos/${this.image.imageName}`;
 		},
 		classes() {
-			return `photo ${this.size || ''}`;
+			return `photo ${this.size || ''} ${this.description ? 'withDescription' : ''}`;
 		}
 	},
 	template:
 		`<div :class="classes">
 			<img :src="imageUrl">
-			<div class="description">{{description || image.description}}</div>
+			<div v-if="description" class="description">{{description}}</div>
 		</div>`,
 	mounted() {
 		Object.assign(this.$el.style, {

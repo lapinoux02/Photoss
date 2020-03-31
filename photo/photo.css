@@ -1,7 +1,7 @@
 .photo {
     margin-bottom: 1vw;
     width: 14vw;
-    height: 18vw;
+    height: 14vw;
     padding-top: 1vw;
     display: flex;
     flex-direction: column;
@@ -12,8 +12,16 @@
 
 .photo.large {
     width: 28vw;
-    height: 36vw;
+    height: 28vw;
     padding-top: 2vw;
+}
+
+.photo.withDescription {
+    height: 18vw;
+}
+
+.photo.withDescription.large {
+    height: 36vw;
 }
 
 .photo img {
