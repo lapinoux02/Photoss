@@ -7,5 +7,6 @@ Vue.component('titre', {
 			<lettre lettre-url="../ressources/images/Lettre T.png" alt="T"></lettre>
 			<lettre lettre-url="../ressources/images/Lettre O.png" alt="O"></lettre>
 			<lettre lettre-url="../ressources/images/Lettre S.png" alt="S"></lettre>
+			<lettre lettre-url="../ressources/images/Lettre S.png" alt="S"></lettre>
 		</div>`
 })
