@@ -8,7 +8,7 @@ Vue.component('navbar', {
 	template: 
 		`<div id="navbar">
 			<span id="left-block">
-				<router-link to="/acceuil" class="button">Accueil</router-link>
+				<router-link to="/accueil" class="button">Accueil</router-link>
 				<router-link to="/albums" class="button">Albums</router-link>
 			</span>
 			<span id="right-block">

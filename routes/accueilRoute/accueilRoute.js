@@ -1,4 +1,4 @@
-const acceuilRoute = {
+const accueilRoute = {
 	data() {
 		return {
 			image: null,
@@ -6,7 +6,7 @@ const acceuilRoute = {
 		}
 	},
 	template:
-		`<div id="acceuilRoute">
+		`<div id="accueilRoute">
 			<illustration v-if="image" :image="image"></illustration>
 		</div>`,
 	methods: {

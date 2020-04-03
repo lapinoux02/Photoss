@@ -15,7 +15,7 @@ const connexionRoute = {
 	methods: {
 		async signIn() {
 			this.$store.state.user = (await firebase.auth().signInWithEmailAndPassword(this.mail, this.password)).user;
-			router.push('/acceuil');
+			router.push('/accueil');
 		}
 	}
 };
