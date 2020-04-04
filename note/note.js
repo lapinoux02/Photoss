@@ -1,5 +1,5 @@
 Vue.component('note', {
-	props: ['image', 'save', 'modify'],
+	props: ['image', 'save', 'modify', 'remove'],
 	store,
 	data() {
 		return {
@@ -25,6 +25,8 @@ Vue.component('note', {
 			</ul>
 			<div v-if="save" class="button" v-on:click="save(tmpImage)">Enregistrer</div>
 			<div v-if="canModify && !modifying" class="button" v-on:click="toggleModification()">Modifier</div>
+			<div v-if="canModify && !modifying" class="button" v-on:click="unsort()">Déclasser</div>
+			<div v-if="remove && !modifying" class="button" v-on:click="remove()">Supprimer</div>
 			<div v-if="canModify && modifying" class="button" v-on:click="modify(tmpImage) && toggleModification()">Enregistrer</div>
 			<div v-if="canModify && modifying" class="button" v-on:click="toggleModification()">Annuler</div>
 		</div>`,
@@ -32,6 +34,10 @@ Vue.component('note', {
 		toggleModification() {
 			this.tmpImage = Object.assign({}, this.image);
 			this.modifying = !this.modifying;
+		},
+		async unsort() {
+			await REST_CLIENT.unsortImage(this.image);
+			router.push(`/albums/${this.image.album}/images`);
 		}
 	},
 	mounted() {

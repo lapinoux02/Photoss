@@ -35,5 +35,9 @@ const REST_CLIENT = {
                 'Content-Type': 'multipart/form-data'
             }
 		}));
+	},
+	async deleteImage(image) {
+		const idToken = await firebase.auth().currentUser.getIdToken(true);
+		return (await axios.post(`${BASE_URL}/photo/delete`, {idToken, image}));
 	}
 }
