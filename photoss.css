@@ -38,6 +38,12 @@ input, textarea {
     width: 11vw;
 }
 
+.autocomplist {
+    font-family: RipeApricots;
+    font-size: 2.5vw;
+    width: calc(11vw + 2px);
+}
+
 textarea {
     min-height: 3vw;
     line-height: 1vw;

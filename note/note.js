@@ -18,7 +18,7 @@ Vue.component('note', {
 	template :
 		`<div>
 			<ul v-if="tmpImage" class="note">
-				<li class="albumIco"><input v-model="tmpImage.album" type="text" v-if="editable"/><span v-else class="clickable" v-on:click="gotoAlbum()">{{image.album}}</span></li>
+				<li class="albumIco"><autocompleteInput v-model="tmpImage.album" type="text" v-if="editable"/><span v-else class="clickable" v-on:click="gotoAlbum()">{{image.album}}</span></li>
 				<li class="dateIco"><input v-model="tmpImage.date" type="text" v-if="editable"/><span v-else>{{image.date}}</span></li>
 				<li class="lieuIco"><input v-model="tmpImage.lieu" type="text" v-if="editable"/><span v-else>{{image.lieu}}</span></li>
 				<li class="descriptionIco"><textarea v-model="tmpImage.description" type="text" v-if="editable"/><span v-else>{{image.description}}</span></li>

@@ -39,5 +39,8 @@ const REST_CLIENT = {
 	async deleteImage(image) {
 		const idToken = await firebase.auth().currentUser.getIdToken(true);
 		return (await axios.post(`${BASE_URL}/photo/delete`, {idToken, image}));
+	},
+	async getAlbumAutocomplete(text) {
+		return (await axios.get(`${BASE_URL}/albums/autocomplete/${text}`)).data;
 	}
 }
