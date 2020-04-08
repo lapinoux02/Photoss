@@ -18,7 +18,7 @@ Vue.component('note', {
 	template :
 		`<div>
 			<ul v-if="tmpImage" class="note">
-				<li class="albumIco"><input v-model="tmpImage.album" type="text" v-if="editable"/><span v-else>{{image.album}}</span></li>
+				<li class="albumIco"><input v-model="tmpImage.album" type="text" v-if="editable"/><span v-else class="clickable" v-on:click="gotoAlbum()">{{image.album}}</span></li>
 				<li class="dateIco"><input v-model="tmpImage.date" type="text" v-if="editable"/><span v-else>{{image.date}}</span></li>
 				<li class="lieuIco"><input v-model="tmpImage.lieu" type="text" v-if="editable"/><span v-else>{{image.lieu}}</span></li>
 				<li class="descriptionIco"><textarea v-model="tmpImage.description" type="text" v-if="editable"/><span v-else>{{image.description}}</span></li>
@@ -31,6 +31,9 @@ Vue.component('note', {
 			<div v-if="canModify && modifying" class="button" v-on:click="toggleModification()">Annuler</div>
 		</div>`,
 	methods: {
+		gotoAlbum() {
+			router.push(`/albums/${this.image.album}/images`)
+		},
 		toggleModification() {
 			this.tmpImage = Object.assign({}, this.image);
 			this.modifying = !this.modifying;
