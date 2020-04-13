@@ -1,17 +1,3 @@
-.autocomplist {
-	position: absolute;
-    background-color: white;
-    border: 1px grey solid;
-    border-top: 0px;
-    list-style: none;
-    padding: 0vw;
-}
-
-.autocomplist > li {
-	padding: 0vw;
-	margin: 0px;
-}
-
-.autocomplist > li:hover {
-	background-color: grey;
+.autocompleteInput input::-webkit-calendar-picker-indicator {
+  display: none;
 }
