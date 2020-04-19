@@ -1,4 +1,25 @@
 #albumImages {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#albumImages .controls {
+	margin-bottom: 1.5vw;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+	font-family: RipeApricots;
+    font-size: 2.5vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#albumImages .controls img {
+	margin-right: 0.5vw;
+}
+
+#albumImages .images {
 	width: 68vw;
 	display: flex;
 	flex-direction: row;

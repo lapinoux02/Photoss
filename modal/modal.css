@@ -1,0 +1,57 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #cacaca;
+}
+
+.modalHeader {
+    width: 100vw;
+    height: : 2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modalHeader .close {
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.modalContent {
+    height: calc(100vh - 2vw);
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.modalContent .nav {
+    display: flex;
+    align-items: center;
+    font-size: 5vw;
+    cursor: pointer;
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+}
+
+.modalContent .nav.noclick {
+    cursor: default;
+}
+
+.modalContent img {
+    width: 94vw;
+    max-width: calc(100vh - 6vw);
+    height: calc(100vh - 6vw);
+    max-height: 94vw;
+    object-fit: contain;
+}

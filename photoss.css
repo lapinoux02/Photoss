@@ -4,6 +4,10 @@ body {
     padding-bottom: 50px;
 }
 
+body.modalOpen {
+    overflow: hidden;
+}
+
 @font-face {
 	font-family: RipeApricots;
     src: url(./ressources/fonts/RipeApricots.ttf);
