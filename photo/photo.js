@@ -1,10 +1,12 @@
 Vue.component('photo', {
 	// size = 'large' | 'small' (si une autre valeur est saisie, 'small' sera pris par defaut)
 	props: ['image', "description", "size"],
+	data() {
+		return {
+			imageUrl: null
+		}
+	},
 	computed: {
-		imageUrl() {
-			return `${BASE_URL}/albums/${this.image.album || undefined}/photos/${this.image.imageName}`;
-		},
 		classes() {
 			return `photo ${this.size || ''} ${this.description ? 'withDescription' : ''}`;
 		}
@@ -14,13 +16,13 @@ Vue.component('photo', {
 			<img :src="imageUrl">
 			<div v-if="description" class="description">{{description}}</div>
 		</div>`,
-	mounted() {
-		Object.assign(this.$el.style, {
-			transform: MATH_UTILS.randomRotate()
-		});
+	async mounted() {
+		this.imageUrl = 'data:image/jpeg;base64,' + (await REST_CLIENT.getPhoto(this.image.album || undefined, this.image.imageName));
+		this.$el.style.transform = MATH_UTILS.randomRotate();
 	},
 	watch: {
-		image(val) {
+		async image(val) {
+			this.imageUrl = 'data:image/jpeg;base64,' + (await REST_CLIENT.getPhoto(this.image.album || undefined, this.image.imageName));
 			this.$el.style.transform = MATH_UTILS.randomRotate();
 		}
 	}

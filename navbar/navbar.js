@@ -2,26 +2,27 @@ Vue.component('navbar', {
 	store,
 	computed: {
 		user() {
-			return this.$store.state.user
+			return store.state.user
 		}
 	},
 	template: 
 		`<div id="navbar">
 			<span id="left-block">
-				<router-link to="/accueil" class="button">Accueil</router-link>
-				<router-link to="/albums" class="button">Albums</router-link>
+				<router-link v-if="user" to="/accueil" class="button">Accueil</router-link>
+				<router-link v-if="user" to="/albums" class="button">Albums</router-link>
 			</span>
 			<span id="right-block">
 				<router-link v-if="!user" to="/connexion" class="button">Connexion</router-link>
-				<span v-if="user" v-on:click="openImport" class="button">Ajouter</span>
-				<router-link v-if="user" to="/gestion" class="button">Classer</router-link>
+				<span v-if="user && user.isUserPrio" v-on:click="openImport" class="button">Ajouter</span>
+				<router-link v-if="user && user.isUserPrio" to="/gestion" class="button">Classer</router-link>
 				<span v-if="user" class="button" v-on:click="disconnect">{{user.email}}</span>
 			</span>
 		</div>`,
 	methods: {
 		async disconnect() {
 			await firebase.auth().signOut();
-			this.$store.state.user = null;
+			store.state.user = null;
+			router.push('/connexion');
 		},
 		openImport() {
 			let input = document.createElement('input');
@@ -34,12 +35,5 @@ Vue.component('navbar', {
 			}
 			input.click();
 		}
-	},
-	mounted() {
-		firebase.auth().onAuthStateChanged((user) => {
-		  	if (user) {
-		  		this.$store.state.user = user;
-		  	}
-		});
 	}
 });

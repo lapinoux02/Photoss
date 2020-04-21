@@ -1,6 +1,6 @@
 const router = new VueRouter({
 	routes: [
-		{path: '/', component: accueilRoute},
+		{path: '/', component: connexionRoute},
 		{path: '/accueil', component: accueilRoute},
 		{path: '/albums', component: albumsRoute},
 		{path: '/albums/:albumId/images', component: albumImagesRoute},

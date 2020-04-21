@@ -12,7 +12,7 @@ Vue.component('note', {
 			return this.save || this.modifying;
 		},
 		canModify() {
-			return this.modify && this.$store.state.user;
+			return this.modify && store.state.user;
 		}
 	},
 	template :

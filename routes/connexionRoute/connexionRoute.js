@@ -14,7 +14,11 @@ const connexionRoute = {
 		</div>`,
 	methods: {
 		async signIn() {
-			this.$store.state.user = (await firebase.auth().signInWithEmailAndPassword(this.mail, this.password)).user;
+			// Passer en local pour pouvoir raffraichir tranquillement (LOCAL)
+			await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+			const user = (await firebase.auth().signInWithEmailAndPassword(this.mail, this.password)).user;
+			user.isUserPrio = await REST_CLIENT.isUserPrio(user);
+			this.$store.state.user = user;
 			router.push('/accueil');
 		}
 	}
