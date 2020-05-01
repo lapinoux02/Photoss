@@ -7,7 +7,7 @@ const REST_CLIENT = {
 		return (await axios.post(`${BASE_URL}/users/isUserPrio`, {idToken: await getToken()})).data
 	},
 	async getPhoto(album, photo) {
-		return (await axios.post(`${BASE_URL}/albums/${album}/photos/${photo}`, {idToken: await getToken()})).data;
+		return proxy.getImage(`${BASE_URL}/albums/${album}/photos/${photo}`);
 	},
 	async getAlbums() {
 		return (await axios.post(`${BASE_URL}/albums/data`, {idToken: await getToken()})).data;
