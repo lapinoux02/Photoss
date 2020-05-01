@@ -14,11 +14,12 @@ const albumsRoute = {
 		}
 	},
 	async created() {
-		(await REST_CLIENT.getAlbums()).forEach(async album => {
+		let albums = await REST_CLIENT.getAlbums();
+		for (const album of albums) {
 			this.albums.push({
 				title: album,
 				sample: await REST_CLIENT.getSampleAlbumPhotosData(album)
 			});
-		});
+		}
 	}
 };
